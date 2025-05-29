@@ -3,10 +3,6 @@
 import { ReactNode } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "./swiper.css";
 
 const Slider = ({ children }: { children: ReactNode[] }) => (
   <Swiper
@@ -24,11 +20,11 @@ const Slider = ({ children }: { children: ReactNode[] }) => (
         return `<span class=${className}>.</span>`;
       },
     }}
-    autoplay={{ pauseOnMouseEnter: true, waitForTransition: true }}
+    // autoplay={{ pauseOnMouseEnter: true, waitForTransition: true }}
     loop
     speed={800}
     followFinger
-    mousewheel
+    mousewheel={{ forceToAxis: true }}
     className="h-[302px] w-[518px] md:h-[468px] md:w-[871px]"
   >
     {children.map((Slide, index) => (

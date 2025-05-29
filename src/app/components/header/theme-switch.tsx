@@ -26,7 +26,7 @@ const Switch = () => {
     >
       <SwitchPrimitives.Thumb
         className={
-          "bg-switch-secondary pointer-events-none block size-5 rounded-full transition-transform data-[state=checked]:translate-x-7 data-[state=unchecked]:translate-x-0"
+          "bg-secondary-foreground pointer-events-none block size-5 rounded-full transition-transform data-[state=checked]:translate-x-7 data-[state=unchecked]:translate-x-0"
         }
       />
     </SwitchPrimitives.Root>

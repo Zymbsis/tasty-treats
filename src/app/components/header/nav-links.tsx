@@ -14,7 +14,7 @@ const NavLinks = () => {
 
   return (
     <nav className="hidden min-h-6 items-center gap-4 text-xs font-medium md:flex">
-      {routes.map((route) => (
+      {routes.map(route => (
         <Link
           className={clsx("transition-colors", {
             "text-accent": route.href === pathname,

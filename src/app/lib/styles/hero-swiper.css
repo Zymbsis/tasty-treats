@@ -1,3 +1,7 @@
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/autoplay";
+
 .custom-pagination-bullets {
   width: 100%;
   max-width: 375px;

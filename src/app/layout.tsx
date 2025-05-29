@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import ThemeProvider from "@app/components/theme-provider";
-import "./globals.css";
+import Provider from "@app/components/ui/provider";
 import Header from "@app/components/header/header";
+import "@app/lib/styles/globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,10 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.variable}>
-        <ThemeProvider attribute="data-theme" enableSystem>
+        <Provider attribute="data-theme" enableSystem>
           <Header />
           {children}
-        </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );

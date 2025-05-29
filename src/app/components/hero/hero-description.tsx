@@ -6,7 +6,7 @@ const HeroDescription = () => {
         <span className="text-accent italic">Tasty Treats&apos;</span>{" "}
         Customizable Masterclass
       </h1>
-      <h2 className="text-14/tight md:text-16/normal">
+      <h2 className="text-sm/tight md:text-base/normal">
         TastyTreats - Customize Your Meal with Ingredient{" "}
         <br className="hidden md:block" /> Options and Step-by-Step Video
         Guides.
