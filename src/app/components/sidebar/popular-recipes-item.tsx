@@ -9,7 +9,7 @@ const PopularRecipesItem = ({ title, description, preview }: Recipe) => {
           src={preview}
           alt={title}
           fill
-          className="rounded-xl object-contain"
+          className="rounded-hero-lg object-contain"
           sizes="350px"
         />
       </div>

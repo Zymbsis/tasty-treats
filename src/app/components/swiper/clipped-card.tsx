@@ -7,7 +7,7 @@ const ClippedCard = ({ alt, ...props }: ImageProps) => (
       fill
       priority
       sizes="(max-width: 768px) 222px, 351px"
-      className="animate-fade-in rounded-xl object-cover"
+      className="animate-fade-in rounded-hero-lg object-cover"
       {...props}
     />
   </div>

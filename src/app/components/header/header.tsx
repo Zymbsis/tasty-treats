@@ -1,6 +1,6 @@
 import Logo from "@app/components/header/logo";
 import NavLinks from "@app/components/header/nav-links";
-import Switch from "@app/components/header/theme-switch";
+import ThemeSwitch from "@app/components/header/theme-switch";
 import { Bars4Icon } from "@heroicons/react/24/solid";
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
     <header className="relative flex justify-between py-5 md:py-7 xl:py-10">
       <NavLinks />
       <Logo />
-      <Switch />
+      <ThemeSwitch />
       <button type="button" className="size-8 cursor-pointer md:hidden">
         <Bars4Icon />
       </button>

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2017",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "skipLibCheck": true,
@@ -14,8 +14,6 @@
     "jsx": "preserve",
     "incremental": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
-    "alwaysStrict": true,
     "plugins": [
       {
         "name": "next"

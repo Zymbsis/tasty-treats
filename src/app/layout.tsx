@@ -27,8 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.variable}>
-        <Provider attribute="data-theme" enableSystem>
+      <body className={`${inter.variable}`}>
+        <Provider>
           <Header />
           {children}
         </Provider>

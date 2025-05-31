@@ -7,7 +7,7 @@ const NarrowCard = ({ alt, ...props }: ImageProps) => (
       fill
       priority
       sizes="(max-width: 767px) 253px, 400px"
-      className="animate-fade-in rounded-xl object-cover"
+      className="animate-fade-in rounded-hero-lg object-cover"
       {...props}
     />
   </div>
