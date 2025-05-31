@@ -1,7 +1,7 @@
 "use client";
 
-import clsx from "clsx";
-import Link from "next/link";
+import { cn } from "@heroui/react";
+import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 
 const routes = [
@@ -9,18 +9,23 @@ const routes = [
   { href: "/favorites", name: "Favorites" },
 ];
 
-const NavLinks = () => {
+const NavLinks = ({ ...props }: Omit<LinkProps, "href">) => {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden min-h-6 items-center gap-4 text-xs font-medium md:flex">
+    <nav className="flex min-h-6 flex-col items-center gap-4 text-xs font-medium md:flex-row">
       {routes.map(route => (
         <Link
-          className={clsx("transition-colors", {
-            "text-accent": route.href === pathname,
-          })}
+          className={cn(
+            "text-hover-foreground md:text-foreground transition-colors",
+            {
+              "text-active-foreground dark:text-accent md:text-accent":
+                route.href === pathname,
+            },
+          )}
           key={route.href}
           href={route.href}
+          {...props}
         >
           {route.name}
         </Link>

@@ -3,7 +3,7 @@
 @plugin "./hero.ts";
 @source "../../../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
 
-/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --background: hsl(var(--heroui-background));
@@ -17,6 +17,7 @@
   --switch: #cecdcd;
   --slide: #050505;
   --hover-foreground: #f8f8f8;
+  --active-foreground: #ffffff;
   --radius: 0.625rem;
 
   --fade-in-animation: fade-in 0.3s ease-in;
@@ -37,6 +38,7 @@
   --color-slide: var(--slide);
   --color-switch-secondary: var(--switch-secondary);
   --color-hover-foreground: var(--hover-foreground);
+  --color-active-foreground: var(--active-foreground);
   --font-inter: var(--font-inter);
 
   --radius-hero-sm: var(--heroui-radius-small);
