@@ -1,16 +1,18 @@
 "use client";
 
+import { Key } from "react";
+import { useDebouncedCallback } from "use-debounce";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { AutocompleteItem, cn } from "@heroui/react";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
+
 import Input from "@app/components/ui/input";
 import Select from "@app/components/ui/select";
+import ResetButton from "@app/components/filter-bar/reset-button";
+
 import { Area, Ingredient } from "@app/lib/services/api";
 import { TimeOption } from "@app/lib/utils/generateTimeOptions";
-import { AutocompleteItem, cn } from "@heroui/react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useDebouncedCallback } from "use-debounce";
 import { SEARCH_PARAMS } from "@app/lib/constants/search-params";
-import ResetButton from "@app/components/filter-bar/reset-button";
-import { Key } from "react";
 
 type Props = {
   ingredients: Ingredient[];
@@ -29,25 +31,25 @@ const FilterBar = ({ ingredients, areas, timeOptions }: Props) => {
   const area = query.get(SEARCH_PARAMS.AREA) ?? "";
   const ingredient = query.get(SEARCH_PARAMS.INGREDIENT) ?? "";
 
-  const handleUpdateQuery = (key: string, value: string | Key | null) => {
+  const handleUpdateQuery = (key: string, value: Key | null) => {
     if (value) query.set(key, value.toString());
     else query.delete(key);
 
-    push(`${pathname}?${query.toString()}`, { scroll: false });
+    push(`${pathname}?${query}`, { scroll: false });
   };
 
   const handleResetQuery = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { title, time, area, ingredient, ...rest } =
       Object.fromEntries(query);
+
     const updatedQuery = new URLSearchParams(rest);
 
-    push(`${pathname}?${updatedQuery.toString()}`, { scroll: false });
+    push(`${pathname}?${updatedQuery}`, { scroll: false });
   };
 
-  const handleUpdateTitle = useDebouncedCallback((value: string) => {
+  const handleUpdateTitle = (value: string) =>
     handleUpdateQuery(SEARCH_PARAMS.TITLE, value);
-  }, 300);
 
   return (
     <form className="relative pb-8">
@@ -56,7 +58,7 @@ const FilterBar = ({ ingredients, areas, timeOptions }: Props) => {
           label="Search"
           placeholder="Enter Text"
           defaultValue={title}
-          onValueChange={handleUpdateTitle}
+          onValueChange={useDebouncedCallback(handleUpdateTitle, 300)}
           isClearable
           startContent={
             <MagnifyingGlassIcon
