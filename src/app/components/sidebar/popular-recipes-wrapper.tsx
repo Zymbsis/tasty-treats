@@ -3,7 +3,6 @@ import { getPopularRecipes } from "@app/lib/services/api";
 
 const PopularRecipesWrapper = async () => {
   const recipes = await getPopularRecipes();
-  console.log(recipes);
 
   return (
     <div>

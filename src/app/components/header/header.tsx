@@ -10,7 +10,7 @@ const Header = () => {
         <NavLinks />
       </div>
       <Logo />
-      <div className="hidden md:block">
+      <div className="hidden items-center md:flex">
         <ThemeSwitch />
       </div>
       <Menu />

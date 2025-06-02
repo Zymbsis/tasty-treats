@@ -1,25 +1,27 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import clsx from "clsx";
 import CategoriesButton from "@app/components/sidebar/categories-button";
 import { Category } from "@app/lib/services/api";
+import { SEARCH_PARAMS } from "@app/lib/constants/search-params";
 
 type Props = { categories: Category[] };
 
 const CategoriesList = ({ categories }: Props) => {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
   const { replace } = useRouter();
 
   const handleResetCategories = () => {
-    params.delete("category");
-    replace(`/?${params.toString()}`, { scroll: false });
+    params.delete(SEARCH_PARAMS.CATEGORY);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const handleAddCategories = (category: string) => {
-    params.set("category", category);
-    replace(`/?${params.toString()}`, { scroll: false });
+    params.set(SEARCH_PARAMS.CATEGORY, category);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   return (
@@ -27,7 +29,8 @@ const CategoriesList = ({ categories }: Props) => {
       <CategoriesButton onClick={handleResetCategories} />
       <ul className="custom-scrollbar flex h-[198px] flex-col gap-0.5 overflow-y-auto md:h-[416px] md:gap-1">
         {categories.map(category => {
-          const isCategorySelected = params.get("category") === category.name;
+          const isCategorySelected =
+            params.get(SEARCH_PARAMS.CATEGORY) === category.name;
           return (
             <li
               key={category._id}

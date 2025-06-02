@@ -3,9 +3,18 @@ import Image, { ImageProps } from "next/image";
 type Props = ImageProps & { cardTitle: string; cardSubtitle: string };
 
 const MainCard = ({ cardTitle, cardSubtitle, alt, ...props }: Props) => (
-  <div className="border-accent/30 bg-slide animate-fade-in flex w-[200px] flex-col justify-end overflow-hidden rounded-hero-lg border p-3.5 md:w-[351px] md:px-6 md:py-8">
+  <div className="border-accent/30 bg-slide animate-fade-in rounded-hero-lg flex w-[200px] flex-col justify-end overflow-hidden border p-3.5 pt-7 md:w-[351px] md:px-6 md:py-8">
     <span className="glow-ellipse"></span>
-    <Image alt={alt} priority className="z-10" {...props} />
+    <div className="relative h-full">
+      <Image
+        alt={alt}
+        priority
+        fill
+        sizes="(max-width: 767px) 300px, 500px"
+        className="object-contain"
+        {...props}
+      />
+    </div>
     <h2 className="text-secondary-foreground/60 text-10/snug mt-5 text-center font-medium uppercase md:text-sm/tight">
       {cardTitle}
     </h2>

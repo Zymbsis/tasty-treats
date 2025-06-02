@@ -31,7 +31,7 @@
 @theme inline {
   --color-background: hsl(var(--heroui-background));
   --color-foreground: hsl(var(--heroui-foreground));
-
+  --color-contrast-foreground: var(--contrast-foreground);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
   --color-switch: var(--switch);
@@ -55,11 +55,13 @@
 }
 
 .light {
+  --contrast-foreground: #ffffff;
   --secondary-foreground: #f8f8f8;
   --switch-secondary: #f3f3f3;
 }
 
 .dark {
+  --contrast-foreground: #050505;
   --secondary-foreground: #ffffff;
   --switch-secondary: #f8f8f8;
 }
@@ -73,6 +75,7 @@ body {
   min-width: 320px;
   max-width: 1280px;
   margin: 0 auto;
+  animation: var(--animate-fade-in);
 }
 
 body::-webkit-scrollbar {

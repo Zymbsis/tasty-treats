@@ -13,11 +13,11 @@ const NavLinks = ({ ...props }: Omit<LinkProps, "href">) => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex min-h-6 flex-col items-center gap-4 text-xs font-medium md:flex-row">
+    <nav className="flex min-h-6 flex-col items-center text-sm font-medium md:flex-row md:gap-4">
       {routes.map(route => (
         <Link
           className={cn(
-            "text-hover-foreground md:text-foreground transition-colors",
+            "text-hover-foreground md:text-foreground p-2 transition-colors md:p-0",
             {
               "text-active-foreground dark:text-accent md:text-accent":
                 route.href === pathname,
