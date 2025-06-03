@@ -3,8 +3,10 @@ import Image, { ImageProps } from "next/image";
 type Props = ImageProps & { cardTitle: string; cardSubtitle: string };
 
 const MainCard = ({ cardTitle, cardSubtitle, alt, ...props }: Props) => (
-  <div className="border-accent/30 bg-slide animate-fade-in rounded-hero-lg flex w-[200px] flex-col justify-end overflow-hidden border p-3.5 pt-7 md:w-[351px] md:px-6 md:py-8">
-    <span className="glow-ellipse"></span>
+  <div
+    style={{ backgroundImage: "var(--slide-gradient)" }}
+    className="border-accent/30 bg-slide animate-fade-in rounded-hero-lg flex w-[200px] flex-col justify-end overflow-hidden border p-3.5 pt-7 md:w-[351px] md:px-6 md:py-8"
+  >
     <div className="relative h-full">
       <Image
         alt={alt}

@@ -1,11 +1,7 @@
 import PopularRecipesItem from "@app/components/sidebar/popular-recipes-item";
-import { Recipe } from "@app/lib/services/api";
+import { PopularRecipe } from "@app/lib/types/api.types";
 
-type Props = {
-  recipes: Recipe[];
-};
-
-const PopularRecipesList = ({ recipes }: Props) => {
+const PopularRecipesList = ({ recipes }: { recipes: PopularRecipe[] }) => {
   return (
     <ul className="custom-scrollbar flex max-h-[158px] flex-col gap-6 overflow-y-auto pr-2 md:max-h-[304px] md:gap-4 xl:max-h-[352px] xl:gap-8">
       {recipes.map(recipe => (

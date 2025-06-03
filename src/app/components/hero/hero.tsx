@@ -1,6 +1,6 @@
+import { Suspense } from "react";
 import HeroDescription from "@app/components/hero/hero-description";
 import HeroSwiper from "@app/components/swiper/hero-swiper";
-import { Suspense } from "react";
 
 const Hero = () => {
   return (

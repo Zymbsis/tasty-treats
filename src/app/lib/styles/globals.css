@@ -12,8 +12,20 @@
   --radius-sm: var(--heroui-radius-small);
   --radius-md: var(--heroui-radius-medium);
   --radius-lg: var(--heroui-radius-large);
+  --recipe-gradient: linear-gradient(
+    1deg,
+    rgba(5, 5, 5, 0.6) 4.82%,
+    rgba(5, 5, 5, 0) 108.72%
+  );
+  --slide-gradient: radial-gradient(
+    circle at center,
+    rgba(155, 181, 55, 0.6) 0%,
+    rgba(155, 181, 55, 0) 70%
+  );
 
+  /* var(--recipe-gradient) */
   --accent: #9bb537;
+  --star: #eea10c;
   --switch: #cecdcd;
   --slide: #050505;
   --hover-foreground: #f8f8f8;
@@ -34,6 +46,7 @@
   --color-contrast-foreground: var(--contrast-foreground);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
+  --color-star: var(--star);
   --color-switch: var(--switch);
   --color-slide: var(--slide);
   --color-switch-secondary: var(--switch-secondary);

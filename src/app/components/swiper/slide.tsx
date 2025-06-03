@@ -1,3 +1,5 @@
+import "server-only";
+
 import ClippedCard from "@app/components/swiper/clipped-card";
 import MainCard from "@app/components/swiper/main-card";
 import NarrowCard from "@app/components/swiper/narrow-card";

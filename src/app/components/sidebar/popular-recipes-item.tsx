@@ -1,7 +1,7 @@
-import { Recipe } from "@app/lib/services/api";
 import Image from "next/image";
+import { PopularRecipe } from "@app/lib/types/api.types";
 
-const PopularRecipesItem = ({ title, description, preview }: Recipe) => {
+const PopularRecipesItem = ({ title, description, preview }: PopularRecipe) => {
   return (
     <>
       <div className="relative size-16 shrink-0 md:size-12 xl:size-16">

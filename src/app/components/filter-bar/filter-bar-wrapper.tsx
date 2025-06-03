@@ -10,9 +10,9 @@ import Input from "@app/components/ui/input";
 import Select from "@app/components/ui/select";
 import ResetButton from "@app/components/filter-bar/reset-button";
 
-import { Area, Ingredient } from "@app/lib/services/api";
 import { TimeOption } from "@app/lib/utils/generateTimeOptions";
 import { SEARCH_PARAMS } from "@app/lib/constants/search-params";
+import { Area, Ingredient } from "@app/lib/types/api.types";
 
 type Props = {
   ingredients: Ingredient[];
@@ -52,7 +52,7 @@ const FilterBar = ({ ingredients, areas, timeOptions }: Props) => {
     handleUpdateQuery(SEARCH_PARAMS.TITLE, value);
 
   return (
-    <form className="relative pb-8">
+    <form className="relative mb-5 pb-8">
       <fieldset className="flex w-full flex-wrap gap-3 gap-y-9">
         <Input
           label="Search"
@@ -83,7 +83,7 @@ const FilterBar = ({ ingredients, areas, timeOptions }: Props) => {
                 "bg-contrast-foreground py-2.5 pl-2.5 max-h-[124px] md:max-h-[128px]",
             },
           }}
-          className="w-[160px]"
+          className="w-[160px] xl:w-[146px]"
         >
           {timeOptions.map(option => (
             <AutocompleteItem key={option.key}>{option.label}</AutocompleteItem>
@@ -97,7 +97,7 @@ const FilterBar = ({ ingredients, areas, timeOptions }: Props) => {
           onSelectionChange={value =>
             handleUpdateQuery(SEARCH_PARAMS.AREA, value)
           }
-          className="w-[161px]"
+          className="w-[161px] xl:w-[144px]"
         >
           {area => (
             <AutocompleteItem key={area.name}>{area.name}</AutocompleteItem>

@@ -1,3 +1,5 @@
+import "server-only";
+
 import Image, { ImageProps } from "next/image";
 
 const NarrowCard = ({ alt, ...props }: ImageProps) => (

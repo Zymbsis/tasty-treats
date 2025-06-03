@@ -1,6 +1,6 @@
+import { Suspense } from "react";
 import CategoriesWrapper from "@app/components/sidebar/categories-wrapper";
 import PopularRecipesWrapper from "@app/components/sidebar/popular-recipes-wrapper";
-import { Suspense } from "react";
 
 const Sidebar = () => {
   return (

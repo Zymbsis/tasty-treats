@@ -1,14 +1,13 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import clsx from "clsx";
+import { cn } from "@heroui/react";
+
 import CategoriesButton from "@app/components/sidebar/categories-button";
-import { Category } from "@app/lib/services/api";
 import { SEARCH_PARAMS } from "@app/lib/constants/search-params";
+import { Category } from "@app/lib/types/api.types";
 
-type Props = { categories: Category[] };
-
-const CategoriesList = ({ categories }: Props) => {
+const CategoriesList = ({ categories }: { categories: Category[] }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const params = new URLSearchParams(searchParams);
@@ -34,7 +33,7 @@ const CategoriesList = ({ categories }: Props) => {
           return (
             <li
               key={category._id}
-              className={clsx(
+              className={cn(
                 "hover:*:text-accent text-sm/tight font-medium transition-colors first:*:pt-0 last:*:pb-0 md:text-base/tight",
                 isCategorySelected ? "text-accent" : "text-foreground/30",
               )}

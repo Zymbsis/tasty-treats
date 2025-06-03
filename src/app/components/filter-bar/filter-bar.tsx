@@ -1,14 +1,9 @@
-import {
-  Area,
-  getAreas,
-  getIngredients,
-  Ingredient,
-} from "@app/lib/services/api";
 import FilterBarWrapper from "@app/components/filter-bar/filter-bar-wrapper";
+import { getAreas, getIngredients } from "@app/lib/services/api";
 import { generateTimeOptions } from "@app/lib/utils/generateTimeOptions";
 
 const FilterBar = async () => {
-  const [ingredients, areas]: [Ingredient[], Area[]] = await Promise.all([
+  const [ingredients, areas] = await Promise.all([
     getIngredients(),
     getAreas(),
   ]);

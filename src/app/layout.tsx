@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import Provider from "@app/components/ui/provider";
@@ -13,11 +13,6 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Tasty Threats",
   description: "",
-};
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
 };
 
 export default function RootLayout({
