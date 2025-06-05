@@ -16,7 +16,6 @@ export type EventTopic = {
   imgWebpUrl: string;
   previewWebpUrl: string;
 };
-
 export type Category = {
   _id: string;
   name: string;
@@ -38,29 +37,35 @@ export type PopularRecipe = {
   preview: string;
   popularity: number;
 };
-
-export type FullRecipeIngredient = {
+export type RecipeIngredient = {
   id: string;
   measure: string;
 };
-export type FullRecipe = Omit<PopularRecipe, "popularity"> & {
+export type FullRecipeIngredient = RecipeIngredient & {
+  name: string;
+  desc: string;
+  img: string;
+};
+export type Recipe = Omit<PopularRecipe, "popularity"> & {
   category: string;
   area: string;
   instructions: string;
   thumb: string;
   time: string;
   youtube: string;
-  tag: string[];
-  ingredients: FullRecipeIngredient[];
+  tags: string[];
+  ingredients: RecipeIngredient[];
   rating: number;
 };
-
 export type PaginationMetadata = {
   page: string;
   perPage: string;
   totalPages: number;
 };
-
 export type PaginatedRecipes = PaginationMetadata & {
-  results: FullRecipe[];
+  results: Recipe[];
+};
+export type FullRecipe = Recipe & {
+  ingredients: FullRecipeIngredient[];
+  whoRated: number;
 };

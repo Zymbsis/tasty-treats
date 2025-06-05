@@ -23,7 +23,6 @@
     rgba(155, 181, 55, 0) 70%
   );
 
-  /* var(--recipe-gradient) */
   --accent: #9bb537;
   --star: #eea10c;
   --switch: #cecdcd;

@@ -30,7 +30,8 @@ const Select = <T,>({ ...props }: AutocompleteProps<T & {}>) => {
           mainWrapper: "justify-end",
           inputWrapper: "h-[46px] md:h-[48px] px-[18px] py-3.5",
           label: "group-data-[filled-within=true]:text-foreground/50 bottom-0",
-          input: "text-sm/4.5 md:text-base/5",
+          input:
+            "text-sm/4.5 md:text-base/5 data-[has-end-content=true]:pe-0 truncate",
         },
       }}
       popoverProps={{

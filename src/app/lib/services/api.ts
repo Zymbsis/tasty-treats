@@ -3,64 +3,63 @@ import {
   Area,
   Category,
   Event,
+  FullRecipe,
   Ingredient,
   PaginatedRecipes,
   PopularRecipe,
 } from "@app/lib/types/api.types";
 
-export const getCategories = async (): Promise<Category[]> => {
-  const response = await fetch(
-    "https://tasty-treats-backend.p.goit.global/api/categories",
-  );
-  const data = await response.json();
+const BASE_URL = "https://tasty-treats-backend.p.goit.global/api";
 
-  return data;
+export const getCategories = async (): Promise<Category[]> => {
+  // await new Promise(res => setTimeout(res, 5000));
+  const response = await fetch(`${BASE_URL}/categories`);
+
+  return await response.json();
 };
 
 export const getPopularRecipes = async (): Promise<PopularRecipe[]> => {
-  const response = await fetch(
-    "https://tasty-treats-backend.p.goit.global/api/recipes/popular",
-  );
-  const data = await response.json();
+  // await new Promise(res => setTimeout(res, 5000));
+  const response = await fetch(`${BASE_URL}/recipes/popular`);
 
-  return data;
+  return await response.json();
 };
 
 export const getEvents = async (): Promise<Event[]> => {
   // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(
-    "https://tasty-treats-backend.p.goit.global/api/events",
-  );
-  const data = await response.json();
-  return data;
+  const response = await fetch(`${BASE_URL}/events`);
+
+  return await response.json();
 };
 
 export const getIngredients = async (): Promise<Ingredient[]> => {
   // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(
-    "https://tasty-treats-backend.p.goit.global/api/ingredients",
-  );
-  const data = await response.json();
-  return data;
+  const response = await fetch(`${BASE_URL}/ingredients`);
+
+  return await response.json();
 };
 
 export const getAreas = async (): Promise<Area[]> => {
   // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(
-    "https://tasty-treats-backend.p.goit.global/api/areas",
-  );
-  const data = await response.json();
-  return data;
+  const response = await fetch(`${BASE_URL}/areas`);
+
+  return await response.json();
 };
 
 export const getRecipes = async (
   query: SearchParamsType,
 ): Promise<PaginatedRecipes> => {
+  // await new Promise(res => setTimeout(res, 5000));
   const searchParams = new URLSearchParams(query);
 
-  const response = await fetch(
-    `https://tasty-treats-backend.p.goit.global/api/recipes?${searchParams}`,
-  );
-  const data = await response.json();
-  return data;
+  const response = await fetch(`${BASE_URL}/recipes?${searchParams}`);
+
+  return await response.json();
+};
+
+export const getRecipeById = async (id: string): Promise<FullRecipe> => {
+  // await new Promise(res => setTimeout(res, 5000));
+  const response = await fetch(`${BASE_URL}/recipes/${id}`);
+
+  return await response.json();
 };
