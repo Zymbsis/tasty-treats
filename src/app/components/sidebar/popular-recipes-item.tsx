@@ -11,6 +11,8 @@ const PopularRecipesItem = ({ title, description, preview }: PopularRecipe) => {
           fill
           className="rounded-hero-lg object-contain"
           sizes="350px"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8WA8AAkcBYnr93DQAAAAASUVORK5CYII="
         />
       </div>
 

@@ -5,7 +5,7 @@ const baseArray = Array.from({ length: 4 });
 const PopularRecipesSkeleton = () => {
   return (
     <>
-      <h2 className="mb-5 text-lg/snug font-semibold uppercase md:mb-8 xl:text-2xl/7">
+      <h2 className="mb-5 text-lg/snug font-semibold whitespace-nowrap uppercase md:mb-8 xl:text-2xl/7">
         Popular recipes
       </h2>
 
