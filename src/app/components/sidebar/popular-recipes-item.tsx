@@ -15,7 +15,7 @@ const PopularRecipesItem = ({ title, description, preview }: PopularRecipe) => {
       </div>
 
       <div className="w-full overflow-hidden">
-        <h3 className="mb-2 truncate text-sm/4.5 font-semibold uppercase md:mb-1">
+        <h3 className="mb-2 truncate text-sm/4.5 font-semibold uppercase">
           {title}
         </h3>
         <p className="text-foreground/80 md:text-10/3.5 line-clamp-2 text-xs/3 md:line-clamp-3">
