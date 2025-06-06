@@ -6,15 +6,10 @@ const Select = <T,>({ ...props }: AutocompleteProps<T & {}>) => {
       radius="lg"
       labelPlacement="outside"
       variant="bordered"
-      showScrollIndicators={false}
       scrollShadowProps={{
-        // className: "custom-scrollbar",
-        // hideScrollBar: false,
+        className: "custom-scrollbar",
+        hideScrollBar: false,
         isEnabled: false,
-      }}
-      onOpenChange={isOpen => {
-        if (isOpen) document.documentElement.style.overflow = "hidden";
-        else document.documentElement.style.overflow = "auto";
       }}
       clearButtonProps={{
         className:
@@ -36,8 +31,8 @@ const Select = <T,>({ ...props }: AutocompleteProps<T & {}>) => {
       }}
       popoverProps={{
         classNames: {
-          content:
-            "bg-contrast-foreground py-2.5 pl-2.5 max-h-[176px] md:max-h-[188px]",
+          content: "bg-contrast-foreground py-2.5 pl-2.5",
+          base: "max-h-[176px] md:max-h-[188px]",
         },
       }}
       listboxProps={{

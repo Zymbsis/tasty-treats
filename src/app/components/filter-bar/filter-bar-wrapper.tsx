@@ -79,8 +79,8 @@ const FilterBar = ({ ingredients, areas, timeOptions }: Props) => {
           }
           popoverProps={{
             classNames: {
-              content:
-                "bg-contrast-foreground py-2.5 pl-2.5 max-h-[124px] md:max-h-[128px]",
+              content: "bg-contrast-foreground py-2.5 pl-2.5",
+              base: "max-h-[124px] md:max-h-[128px]",
             },
           }}
           className="w-[160px] xl:w-[146px]"
@@ -111,7 +111,6 @@ const FilterBar = ({ ingredients, areas, timeOptions }: Props) => {
           onSelectionChange={value =>
             handleUpdateQuery(SEARCH_PARAMS.INGREDIENT, value)
           }
-          isVirtualized
           className="w-[188px]"
         >
           {ingredient => (
