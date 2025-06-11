@@ -1,0 +1,147 @@
+@import "./hero-swiper.css";
+@import "tailwindcss";
+@plugin "./hero.ts";
+@source "../../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: hsl(var(--heroui-background));
+  --foreground: hsl(var(--heroui-foreground));
+
+  --radius-sm: var(--heroui-radius-small);
+  --radius-md: var(--heroui-radius-medium);
+  --radius-lg: var(--heroui-radius-large);
+  --recipe-gradient: linear-gradient(
+    1deg,
+    rgba(5, 5, 5, 0.6) 4.82%,
+    rgba(5, 5, 5, 0) 108.72%
+  );
+  --slide-gradient: radial-gradient(
+    circle at center,
+    rgba(155, 181, 55, 0.6) 0%,
+    rgba(155, 181, 55, 0) 70%
+  );
+
+  --accent: #9bb537;
+  --star: #eea10c;
+  --switch: #cecdcd;
+  --slide: #050505;
+  --hover-foreground: #f8f8f8;
+  --active-foreground: #ffffff;
+  --radius: 0.625rem;
+
+  --fade-in-animation: fade-in 0.3s ease-in;
+  --fade-out-animation: fade-out 0.8s ease-out;
+  --text-8: 0.5rem;
+  --text-10: 0.625rem;
+  --text-22: 1.375rem;
+  --text-26: 1.625rem;
+}
+
+@theme inline {
+  --color-background: hsl(var(--heroui-background));
+  --color-foreground: hsl(var(--heroui-foreground));
+  --color-contrast-foreground: var(--contrast-foreground);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-star: var(--star);
+  --color-switch: var(--switch);
+  --color-slide: var(--slide);
+  --color-switch-secondary: var(--switch-secondary);
+  --color-hover-foreground: var(--hover-foreground);
+  --color-active-foreground: var(--active-foreground);
+  --font-inter: var(--font-inter);
+
+  --radius-hero-sm: var(--heroui-radius-small);
+  --radius-hero-md: var(--heroui-radius-medium);
+  --radius-hero-lg: var(--heroui-radius-large);
+
+  --animate-fade-in: var(--fade-in-animation);
+  --animate-fade-out: var(--fade-out-animation);
+  --text-8: var(--text-8);
+  --text-10: var(--text-10);
+  --text-22: var(--text-22);
+  --text-26: var(--text-26);
+  --breakpoint-xs: 375px;
+}
+
+.light {
+  --contrast-foreground: #ffffff;
+  --secondary-foreground: #f8f8f8;
+  --switch-secondary: #f3f3f3;
+}
+
+.dark {
+  --contrast-foreground: #050505;
+  --secondary-foreground: #ffffff;
+  --switch-secondary: #f8f8f8;
+}
+
+body {
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-width: 320px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 72px;
+  /* animation: var(--animate-fade-in); */
+}
+
+@media screen and (min-width: 375px) {
+  body {
+    width: 375px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    width: 768px;
+    padding-top: 80px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  body {
+    width: 1280px;
+    padding-top: 104px;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.glow-ellipse {
+  @apply bg-accent/20 absolute h-full w-full rotate-45 rounded-full blur-[80px];
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply rounded-[2px] bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-foreground/18 rounded-[2px];
+}

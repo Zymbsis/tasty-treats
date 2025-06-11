@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import Provider from "@app/components/ui/providers";
-import Header from "@app/components/header/header";
-import "@app/lib/styles/globals.css";
+import Provider from "@/components/ui/providers";
+import Header from "@/components/header/header";
+import "@/lib/styles/globals.css";
 
 const inter = Inter({
   variable: "--font-inter",

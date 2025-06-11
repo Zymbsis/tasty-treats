@@ -1,4 +1,4 @@
-import { getRecipeById } from "@app/lib/services/api";
+import { getRecipeById } from "@/lib/services/api";
 import { NextResponse } from "next/server";
 
 export const GET = async (
