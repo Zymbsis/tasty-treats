@@ -7,12 +7,13 @@ const FilterBarWrapper = async () => {
     getIngredients(),
     getAreas(),
   ]);
+
   const timeOptions = generateTimeOptions(5, 120);
 
   return (
     <FilterBar
-      ingredients={ingredients}
-      areas={areas}
+      ingredients={ingredients || []}
+      areas={areas || []}
       timeOptions={timeOptions}
     />
   );

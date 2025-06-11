@@ -3,11 +3,9 @@ import SwiperWrapper from "@/components/master-class-swiper/swiper-wrapper";
 import { getEvents } from "@/lib/services/api";
 
 const MasterClassSwiper = async () => {
-  let events;
-  try {
-    events = await getEvents();
-  } catch (error) {
-    console.error(error);
+  const events = await getEvents();
+
+  if (!events)
     return (
       <div className="flex h-[200px] items-center justify-center leading-tight xl:h-[442px]">
         <p className="text-foreground/60 text-center md:leading-4">
@@ -19,7 +17,6 @@ const MasterClassSwiper = async () => {
         </p>
       </div>
     );
-  }
 
   return (
     <SwiperWrapper>

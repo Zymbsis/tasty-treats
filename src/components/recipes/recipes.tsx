@@ -4,7 +4,10 @@ import { SearchParamsType } from "@/lib/constants/search-params";
 import { getRecipes } from "@/lib/services/api";
 
 const Recipes = async ({ query }: { query: SearchParamsType }) => {
-  const { results, ...paginationMetadata } = await getRecipes(query);
+  const data = await getRecipes(query);
+  if (!data) return null;
+
+  const { results, ...paginationMetadata } = data;
 
   return (
     <>

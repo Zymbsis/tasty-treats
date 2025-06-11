@@ -1,46 +1,26 @@
-import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  cn,
-  useDisclosure,
-} from "@heroui/react";
+"use client";
+
+import { Card, CardBody, CardFooter, CardHeader, cn } from "@heroui/react";
 import { HeartIcon } from "@heroicons/react/24/outline";
-
-import Rating from "@/components/ui/rating";
+import { Recipe } from "@/lib/types/api.types";
+import { useFullRecipes } from "@/lib/hooks/useFullRecipes";
 import { Button } from "@/components/ui/button";
+import Rating from "@/components/ui/rating";
 import RecipeModalContent from "@/components/modals/recipe/recipe-modal-content";
-import { FullRecipe, Recipe } from "@/lib/types/api.types";
 
-const RecipeItem = ({
-  recipe,
-  isFavorite,
-  isHydrated,
-  handleToggleToFavorite,
-}: {
-  recipe: Recipe;
-  isFavorite: boolean;
-  isHydrated: boolean;
-  handleToggleToFavorite: () => void;
-}) => {
+const RecipeItem = ({ ...recipe }: Recipe) => {
   const { _id, title, description, rating, preview } = recipe;
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [selectedRecipe, setSelectedRecipe] = useState<FullRecipe>();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (selectedRecipe || !isInView) return;
-
-    (async () => {
-      const res = await fetch(`http://localhost:3000/api/recipe/${_id}`);
-      const data = (await res.json()) as FullRecipe;
-      setSelectedRecipe(data);
-    })();
-  }, [isInView, _id, isFavorite, selectedRecipe]);
+  const {
+    ref,
+    isOpen,
+    isFavorite,
+    isLoading,
+    isHydrated,
+    selectedRecipe,
+    onOpenChange,
+    handleOpenModal,
+    handleToggleToFavorite,
+  } = useFullRecipes(_id);
 
   return (
     <Card
@@ -85,7 +65,10 @@ const RecipeItem = ({
           color="primary"
           radius="sm"
           disableRipple
-          onPress={onOpen}
+          isLoading={isLoading}
+          isIconOnly={isLoading}
+          isDisabled={isLoading}
+          onPress={handleOpenModal}
           className="h-[31px] w-[89px] text-xs font-medium"
         >
           See recipe

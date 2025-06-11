@@ -11,65 +11,42 @@ import {
 
 const BASE_URL = "https://tasty-treats-backend.p.goit.global/api";
 
-export const getCategories = async (): Promise<Category[]> => {
-  // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(`${BASE_URL}/categories`);
+const dataFetcher = async <T>(
+  endpoint: `/${string}`,
+  resource?: string,
+): Promise<T | null> => {
+  try {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
+      cache: "force-cache",
+      next: { revalidate: 3600 },
+    });
 
-  return await response.json();
+    if (!response.ok)
+      throw new Error(
+        `Failed to fetch ${resource ?? endpoint.replace("/", "")}`,
+      );
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
 
-export const getPopularRecipes = async (): Promise<PopularRecipe[]> => {
-  // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(`${BASE_URL}/recipes/popular`);
+export const getCategories = () => dataFetcher<Category[]>("/categories");
 
-  return await response.json();
-};
+export const getPopularRecipes = () =>
+  dataFetcher<PopularRecipe[]>("/recipes/popular", "popular recipes");
 
-export const getEvents = async (): Promise<Event[]> => {
-  // await new Promise(res => setTimeout(res, 3000));
-  // throw new Error("Hello Error");
-  const response = await fetch(`${BASE_URL}/events`, {
-    cache: "force-cache",
-    next: { revalidate: 3600 },
-  });
+export const getEvents = () => dataFetcher<Event[]>("/events");
 
-  return await response.json();
-};
+export const getIngredients = () => dataFetcher<Ingredient[]>("/ingredients");
 
-export const getIngredients = async (): Promise<Ingredient[]> => {
-  // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(`${BASE_URL}/ingredients`, {
-    cache: "force-cache",
-    next: { revalidate: 3600 },
-  });
+export const getAreas = () => dataFetcher<Area[]>("/areas");
 
-  return await response.json();
-};
-
-export const getAreas = async (): Promise<Area[]> => {
-  // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(`${BASE_URL}/areas`, {
-    cache: "force-cache",
-    next: { revalidate: 3600 },
-  });
-
-  return await response.json();
-};
-
-export const getRecipes = async (
-  query: SearchParamsType,
-): Promise<PaginatedRecipes> => {
-  // await new Promise(res => setTimeout(res, 5000));
+export const getRecipes = (query: SearchParamsType) => {
   const searchParams = new URLSearchParams(query);
-
-  const response = await fetch(`${BASE_URL}/recipes?${searchParams}`);
-
-  return await response.json();
+  return dataFetcher<PaginatedRecipes>(`/recipes?${searchParams}`, "recipes");
 };
 
-export const getRecipeById = async (id: string): Promise<FullRecipe> => {
-  // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(`${BASE_URL}/recipes/${id}`);
-
-  return await response.json();
-};
+export const getRecipeById = (id: string) =>
+  dataFetcher<FullRecipe>(`/recipes/${id}`, `recipe with id: ${id}`);
