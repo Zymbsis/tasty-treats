@@ -38,14 +38,20 @@ export const getEvents = async (): Promise<Event[]> => {
 
 export const getIngredients = async (): Promise<Ingredient[]> => {
   // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(`${BASE_URL}/ingredients`);
+  const response = await fetch(`${BASE_URL}/ingredients`, {
+    cache: "force-cache",
+    next: { revalidate: 3600 },
+  });
 
   return await response.json();
 };
 
 export const getAreas = async (): Promise<Area[]> => {
   // await new Promise(res => setTimeout(res, 5000));
-  const response = await fetch(`${BASE_URL}/areas`);
+  const response = await fetch(`${BASE_URL}/areas`, {
+    cache: "force-cache",
+    next: { revalidate: 3600 },
+  });
 
   return await response.json();
 };

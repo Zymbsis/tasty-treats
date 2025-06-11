@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import Hero from "@/components/hero/hero";
 import Sidebar from "@/components/sidebar/sidebar";
-import FilterBar from "@/components/filter-bar/filter-bar";
+import FilterBarWrapper from "@/components/filter-bar/filter-bar-wrapper";
 import Recipes from "@/components/recipes/recipes";
 import { SEARCH_PARAMS, SearchParamsType } from "@/lib/constants/search-params";
-import { ScrollShadow } from "@heroui/react";
+import FilterBarSkeleton from "@/components/skeletons/filter-bar-skeleton";
 
 export default async function Home({
   searchParams,
@@ -21,26 +21,21 @@ export default async function Home({
 
   return (
     <main
-    // className="animate-fade-in"
+      // className="animate-fade-in"
+      className="pt-[64px] pb-20 md:pt-[61px] md:pb-[100px] xl:pt-[56px]"
     >
-      <ScrollShadow
-        hideScrollBar
-        size={30}
-        className="xs:px-5 h-[calc(100vh-72px)] pt-[64px] md:h-[calc(100vh-80px)] md:px-8 md:pt-[61px] xl:h-[calc(100vh-104px)] xl:px-[100px] xl:pt-[56px]"
-      >
-        <Hero />
-        <div className="flex flex-col gap-16 py-20 md:flex-row md:gap-8 md:pb-24 xl:gap-16 xl:pt-24">
-          <Sidebar />
-          <section>
-            <Suspense fallback="Loading...">
-              <FilterBar />
-            </Suspense>
-            <Suspense fallback="Loading...">
-              <Recipes query={extractedQuery} />
-            </Suspense>
-          </section>
-        </div>
-      </ScrollShadow>
+      <Hero />
+      <div className="flex flex-col gap-16 pt-20 md:flex-row md:gap-8 xl:gap-16 xl:pt-24">
+        <Sidebar />
+        <section>
+          <Suspense fallback={<FilterBarSkeleton />}>
+            <FilterBarWrapper />
+          </Suspense>
+          <Suspense fallback="Loading...">
+            <Recipes query={extractedQuery} />
+          </Suspense>
+        </section>
+      </div>
     </main>
   );
 }

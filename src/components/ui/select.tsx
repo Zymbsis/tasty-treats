@@ -5,6 +5,7 @@ const Select = <T,>({ ...props }: AutocompleteProps<T & {}>) => {
     <Autocomplete
       radius="lg"
       labelPlacement="outside"
+      isVirtualized
       variant="bordered"
       scrollShadowProps={{
         className: "custom-scrollbar",
