@@ -1,3 +1,4 @@
+import ToggleFavoriteButton from "@/components/recipes/toggle-favorite-button";
 import {
   Button,
   Modal,
@@ -6,26 +7,13 @@ import {
   useDisclosure,
 } from "@heroui/react";
 
-const RecipeFooter = ({
-  handleToggleToFavorite,
-  favoriteButtonTitle,
-}: {
-  handleToggleToFavorite: () => void;
-  favoriteButtonTitle: string;
-}) => {
+const RecipeFooter = ({ _id }: { _id: string }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
       <ModalFooter>
-        <Button
-          onPress={handleToggleToFavorite}
-          variant="solid"
-          color="primary"
-          className="h-full w-[200px] px-6 font-medium md:px-7"
-        >
-          {favoriteButtonTitle}
-        </Button>
+        <ToggleFavoriteButton _id={_id} isIconOnly={false} />
         <Button
           onPress={onOpen}
           variant="bordered"
