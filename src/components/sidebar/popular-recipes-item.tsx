@@ -1,11 +1,16 @@
 import Image from "next/image";
 import { PopularRecipe } from "@/lib/types/api.types";
+import Link from "next/link";
 
 const PopularRecipesItem = ({ ...recipe }: PopularRecipe) => {
-  const { title, preview, description } = recipe;
+  const { title, preview, description, _id } = recipe;
 
   return (
-    <>
+    <Link
+      href={`/recipe/${_id}`}
+      scroll={false}
+      className="flex cursor-pointer gap-4 md:gap-2 xl:gap-4"
+    >
       <div className="rounded-hero-lg relative size-16 shrink-0 md:size-12 xl:size-16">
         <Image
           src={preview}
@@ -26,7 +31,7 @@ const PopularRecipesItem = ({ ...recipe }: PopularRecipe) => {
           {description}
         </p>
       </div>
-    </>
+    </Link>
   );
 };
 

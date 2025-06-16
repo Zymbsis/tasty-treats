@@ -16,8 +16,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  modal,
   children,
 }: Readonly<{
+  modal: ReactNode;
   children: ReactNode;
 }>) {
   return (
@@ -25,6 +27,7 @@ export default function RootLayout({
       <body className={`${inter.variable}`}>
         <Provider>
           <Header />
+          {modal}
           {children}
         </Provider>
       </body>

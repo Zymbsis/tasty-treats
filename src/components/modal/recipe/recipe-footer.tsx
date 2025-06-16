@@ -1,4 +1,6 @@
-import ToggleFavoriteButton from "@/components/recipes/toggle-favorite-button";
+"use client";
+
+import ToggleToFavoriteButton from "@/components/ui/toggle-to-favorite-button";
 import {
   Button,
   Modal,
@@ -13,7 +15,13 @@ const RecipeFooter = ({ _id }: { _id: string }) => {
   return (
     <>
       <ModalFooter>
-        <ToggleFavoriteButton _id={_id} isIconOnly={false} />
+        <ToggleToFavoriteButton
+          id={_id}
+          color="primary"
+          variant="solid"
+          startContent={null}
+          className="h-full w-[200px] px-6 font-medium md:px-7"
+        />
         <Button
           onPress={onOpen}
           variant="bordered"
@@ -25,7 +33,7 @@ const RecipeFooter = ({ _id }: { _id: string }) => {
       </ModalFooter>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
-          <div></div>
+          <div>Hello</div>
         </ModalContent>
       </Modal>
     </>

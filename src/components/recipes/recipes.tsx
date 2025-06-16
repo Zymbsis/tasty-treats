@@ -1,7 +1,8 @@
 import Pagination from "@/components/recipes/pagination";
-import PaginationWrapper from "@/components/recipes/pagination-wrapper";
+// import PaginationWrapper from "@/components/recipes/pagination-wrapper";
 import RecipesList from "@/components/recipes/recipes-list";
-import { SEARCH_PARAMS, SearchParamsType } from "@/lib/constants/search-params";
+import PerPageController from "@/components/ui/per-page-controller";
+import { SearchParamsType } from "@/lib/constants/search-params";
 import { getRecipes } from "@/lib/services/api";
 
 const Recipes = async ({ query }: { query: SearchParamsType }) => {
@@ -13,12 +14,13 @@ const Recipes = async ({ query }: { query: SearchParamsType }) => {
 
   return (
     <>
-      {query[SEARCH_PARAMS.LIMIT] && <RecipesList recipes={results} />}
-      <PaginationWrapper>
-        {query[SEARCH_PARAMS.LIMIT] && paginationMetadata.totalPages > 1 && (
-          <Pagination paginationMetadata={paginationMetadata} />
-        )}
-      </PaginationWrapper>
+      <PerPageController query={query} />
+      {<RecipesList recipes={results} />}
+      {/* <PaginationWrapper> */}
+      {paginationMetadata.totalPages > 1 && (
+        <Pagination paginationMetadata={paginationMetadata} />
+      )}
+      {/* </PaginationWrapper> */}
     </>
   );
 };

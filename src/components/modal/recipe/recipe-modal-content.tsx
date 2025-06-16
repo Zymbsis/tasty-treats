@@ -1,6 +1,5 @@
-import RecipeFooter from "@/components/modals/recipe/recipe-footer";
-import RecipeIngredients from "@/components/modals/recipe/recipe-ingredients";
-import RecipeTags from "@/components/modals/recipe/recipe-tags";
+import RecipeFooter from "@/components/modal/recipe/recipe-footer";
+import RecipeTags from "@/components/modal/recipe/recipe-tags";
 import Rating from "@/components/ui/rating";
 import { extractYouTubeId } from "@/lib/utils/extract-youTube-id";
 import { FullRecipe } from "@/lib/types/api.types";
@@ -8,6 +7,7 @@ import { ModalBody } from "@heroui/react";
 import { YouTubeEmbed } from "@next/third-parties/google";
 
 import Image from "next/image";
+import RecipeIngredients from "@/components/modal/recipe/recipe-ingredients";
 
 type Props = {
   selectedRecipe: FullRecipe;
@@ -37,7 +37,6 @@ const RecipeModalContent = ({ selectedRecipe }: Props) => {
             params="controls=1"
           />
         )}
-
         {!videoId && (
           <div className="relative h-[295px] w-full shrink-0 md:h-[250px]">
             <Image
@@ -49,7 +48,6 @@ const RecipeModalContent = ({ selectedRecipe }: Props) => {
             />
           </div>
         )}
-
         <div className="mt-4 mb-8 flex flex-col gap-3.5 md:gap-4">
           <h2 className="text-lg/6 font-semibold uppercase">{title}</h2>
           {tags.join() && <RecipeTags tags={tags} />}
@@ -62,9 +60,7 @@ const RecipeModalContent = ({ selectedRecipe }: Props) => {
             <span className="ml-2.5 md:ml-0.5">{`${time} min`}</span>
           </div>
         </div>
-
         <RecipeIngredients ingredients={ingredients} />
-
         <p className="mt-8 text-sm/4.5 whitespace-pre-line">{instructions}</p>
       </ModalBody>
       <RecipeFooter _id={selectedRecipe._id} />
