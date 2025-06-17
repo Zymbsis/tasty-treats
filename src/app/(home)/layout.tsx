@@ -6,7 +6,7 @@ import { ReactNode, Suspense } from "react";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
+    <main className="pt-[64px] md:pt-[61px] xl:pt-[56px]">
       <Hero />
       <div className="flex flex-col gap-16 pt-20 md:flex-row md:gap-8 xl:gap-16 xl:pt-24">
         <Sidebar />
@@ -17,7 +17,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
           {children}
         </section>
       </div>
-    </>
+    </main>
   );
 };
 

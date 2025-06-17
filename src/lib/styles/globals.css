@@ -87,8 +87,10 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding-top: 72px;
+  padding-bottom: 80px;
   /* animation: var(--animate-fade-in); */
 }
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -104,6 +106,7 @@ body::-webkit-scrollbar {
   body {
     width: 768px;
     padding-top: 80px;
+    padding-bottom: 100px;
     padding-inline: 32px;
   }
 }
@@ -141,7 +144,7 @@ body::-webkit-scrollbar {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  @apply w-1;
+  @apply h-1 w-1;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

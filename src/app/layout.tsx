@@ -28,9 +28,7 @@ export default function RootLayout({
         <Provider>
           <Header />
           {modal}
-          <main className="pt-[64px] pb-20 md:pt-[61px] md:pb-[100px] xl:pt-[56px]">
-            {children}
-          </main>
+          {children}
         </Provider>
       </body>
     </html>

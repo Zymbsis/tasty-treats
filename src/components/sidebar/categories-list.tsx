@@ -3,9 +3,9 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@heroui/react";
 
-import CategoriesButton from "@/components/sidebar/categories-button";
 import { SEARCH_PARAMS } from "@/lib/constants/search-params";
 import { Category } from "@/lib/types/api.types";
+import ExtendedButton from "@/components/ui/extended-button";
 
 const CategoriesList = ({ categories }: { categories: Category[] }) => {
   const searchParams = useSearchParams();
@@ -23,25 +23,56 @@ const CategoriesList = ({ categories }: { categories: Category[] }) => {
 
   return (
     <div className="mb-10 md:mb-16">
-      <CategoriesButton onClick={() => handleUpdateCategories()} />
-      <ul className="custom-scrollbar flex h-[198px] flex-col gap-0.5 overflow-y-auto md:h-[416px] md:gap-1">
+      {pathname === "/" && (
+        <ExtendedButton
+          variant="bordered"
+          color="secondary"
+          size="md"
+          onClick={() => handleUpdateCategories()}
+          className="text-foreground/50 mb-6 px-7 py-3 md:mb-[30px] xl:mb-[42px]"
+        >
+          All categories
+        </ExtendedButton>
+      )}
+
+      <ul
+        className={cn(
+          "custom-scrollbar flex",
+          pathname === "/" &&
+            "h-[198px] flex-col gap-0.5 overflow-y-auto md:h-[416px] md:gap-1",
+          pathname !== "/" && "flex-row gap-3 overflow-x-auto md:gap-4",
+        )}
+      >
+        {pathname !== "/" && (
+          <li>
+            <ExtendedButton
+              variant="bordered"
+              color="secondary"
+              size="sm"
+              onClick={() => handleUpdateCategories()}
+            >
+              All categories
+            </ExtendedButton>
+          </li>
+        )}
         {categories.map(category => {
           const isCategorySelected =
             params.get(SEARCH_PARAMS.CATEGORY) === category.name;
           return (
-            <li
-              key={category._id}
-              className={cn(
-                "hover:*:text-accent text-sm/tight font-medium transition-colors first:*:pt-0 last:*:pb-0 md:text-base/tight",
-                isCategorySelected ? "text-accent" : "text-foreground/30",
-              )}
-            >
-              <CategoriesButton
+            <li key={category._id}>
+              <ExtendedButton
                 onClick={() => handleUpdateCategories(category.name)}
-                className="w-full cursor-pointer py-2 text-start md:py-2.5"
+                variant={isCategorySelected ? "solid" : "bordered"}
+                color={isCategorySelected ? "primary" : "secondary"}
+                size="sm"
+                className={cn(
+                  pathname === "/"
+                    ? "w-full cursor-pointer py-2 text-start md:py-2.5"
+                    : "",
+                )}
               >
                 {category.name}
-              </CategoriesButton>
+              </ExtendedButton>
             </li>
           );
         })}

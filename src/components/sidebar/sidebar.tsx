@@ -2,11 +2,12 @@ import { Suspense } from "react";
 import CategoriesWrapper from "@/components/sidebar/categories-wrapper";
 import PopularRecipesWrapper from "@/components/sidebar/popular-recipes-wrapper";
 import PopularRecipesSkeleton from "@/components/skeletons/popular-recipes-skeleton";
+import CategoriesSkeleton from "@/components/skeletons/categories-skeleton";
 
 const Sidebar = () => {
   return (
     <aside className="shrink-0 md:w-[176px] xl:w-[235px]">
-      <Suspense fallback="Loading...">
+      <Suspense fallback={<CategoriesSkeleton />}>
         <CategoriesWrapper />
       </Suspense>
       <Suspense fallback={<PopularRecipesSkeleton />}>
