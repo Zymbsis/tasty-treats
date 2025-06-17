@@ -3,7 +3,10 @@ import { Recipe } from "@/lib/types/api.types";
 
 const RecipesList = ({ recipes }: { recipes: Recipe[] }) => {
   return (
-    <ul className="flex grow flex-col gap-6 pb-10 md:flex-row md:flex-wrap md:gap-4 md:pb-16 xl:gap-y-8">
+    <ul
+      id="recipes"
+      className="flex scroll-mt-90 flex-col gap-6 pb-10 md:scroll-mt-75 md:flex-row md:flex-wrap md:gap-4 md:pb-16 xl:scroll-mt-60 xl:gap-y-8"
+    >
       {recipes.map(recipe => (
         <li
           key={recipe._id}

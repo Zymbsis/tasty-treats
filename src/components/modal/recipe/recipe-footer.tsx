@@ -1,16 +1,12 @@
 "use client";
 
+import Modal from "@/components/modal/modal";
+import RatingForm from "@/components/modal/rating/rating-form";
 import ToggleToFavoriteButton from "@/components/ui/toggle-to-favorite-button";
-import {
-  Button,
-  Modal,
-  ModalContent,
-  ModalFooter,
-  useDisclosure,
-} from "@heroui/react";
+import { Button, ModalFooter, useDisclosure } from "@heroui/react";
 
 const RecipeFooter = ({ _id }: { _id: string }) => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   return (
     <>
@@ -31,10 +27,12 @@ const RecipeFooter = ({ _id }: { _id: string }) => {
           Give a rating
         </Button>
       </ModalFooter>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent>
-          <div>Hello</div>
-        </ModalContent>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className="md:w-[424px]"
+      >
+        <RatingForm id={_id} handleCloseModal={onClose} />
       </Modal>
     </>
   );

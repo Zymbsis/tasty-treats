@@ -1,5 +1,4 @@
-import Pagination from "@/components/recipes/pagination";
-// import PaginationWrapper from "@/components/recipes/pagination-wrapper";
+import PaginationWrapper from "@/components/recipes/pagination-wrapper";
 import RecipesList from "@/components/recipes/recipes-list";
 import PerPageController from "@/components/ui/per-page-controller";
 import { SearchParamsType } from "@/lib/constants/search-params";
@@ -11,16 +10,21 @@ const Recipes = async ({ query }: { query: SearchParamsType }) => {
   if (!data) return null;
 
   const { results, ...paginationMetadata } = data;
+  const { page, totalPages } = paginationMetadata;
+
+  const isPaginationShown = totalPages > 1 && +page <= totalPages;
 
   return (
     <>
       <PerPageController query={query} />
-      {<RecipesList recipes={results} />}
-      {/* <PaginationWrapper> */}
-      {paginationMetadata.totalPages > 1 && (
-        <Pagination paginationMetadata={paginationMetadata} />
+      {query.limit && (
+        <>
+          <RecipesList recipes={results} />
+          {isPaginationShown && (
+            <PaginationWrapper paginationMetadata={paginationMetadata} />
+          )}
+        </>
       )}
-      {/* </PaginationWrapper> */}
     </>
   );
 };

@@ -26,7 +26,9 @@ const PerPageController = ({ query }: { query: SearchParamsType }) => {
     else if (isDesktop) updatedQuery.set(SEARCH_PARAMS.LIMIT, "9");
     else if (isTablet) updatedQuery.set(SEARCH_PARAMS.LIMIT, "8");
 
-    replace(`/?${updatedQuery}`);
+    updatedQuery.set(SEARCH_PARAMS.PAGE, "1");
+
+    replace(`/?${updatedQuery}`, { scroll: false });
   }, [width, query, replace, limit]);
 
   return null;

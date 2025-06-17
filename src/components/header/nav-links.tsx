@@ -25,6 +25,7 @@ const NavLinks = ({ ...props }: Omit<LinkProps, "href">) => {
           )}
           key={route.href}
           href={route.href}
+          scroll={false}
           {...props}
         >
           {route.name}

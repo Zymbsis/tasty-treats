@@ -1,33 +1,43 @@
 "use client";
 
+import Pagination from "@/components/recipes/pagination";
 import { SEARCH_PARAMS } from "@/lib/constants/search-params";
+import { PaginationMetadata } from "@/lib/types/api.types";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ReactNode, useEffect } from "react";
 
-const PaginationWrapper = ({ children }: { children: ReactNode }) => {
+const PaginationWrapper = ({
+  paginationMetadata,
+}: {
+  paginationMetadata: PaginationMetadata;
+}) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const { push } = useRouter();
+
   const { width } = useWindowSize();
-  useEffect(() => {
-    if (!width) return;
-    const query = new URLSearchParams(searchParams);
-    const limit = query.get(SEARCH_PARAMS.LIMIT);
-    const isMobile = width < 768;
-    const isTablet = width >= 768 && width < 1280;
-    const isDesktop = width >= 1280;
-    if (isMobile && limit === "6") return;
-    if (isDesktop && limit === "9") return;
-    if (isTablet && limit === "8") return;
+  if (!width) return null;
 
-    if (isMobile) query.set(SEARCH_PARAMS.LIMIT, "6");
-    else if (isDesktop) query.set(SEARCH_PARAMS.LIMIT, "9");
-    else query.set(SEARCH_PARAMS.LIMIT, "8");
-    replace(`${pathname}?${query}`);
-  }, [width, pathname, replace, searchParams]);
+  const { totalPages } = paginationMetadata;
+  const page = Number(paginationMetadata.page);
+  const isMobile = width <= 768;
+  const query = new URLSearchParams(searchParams);
+  const recipeRef = document.querySelector("#recipes");
 
-  return <div>{children}</div>;
+  const handleSetPage = (page: number) => {
+    query.set(SEARCH_PARAMS.PAGE, page.toString());
+    push(`${pathname}?${query}`, { scroll: false });
+    recipeRef?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <Pagination
+      handleSetPage={handleSetPage}
+      page={page}
+      total={totalPages}
+      siblings={isMobile ? 0 : 1}
+    />
+  );
 };
 
 export default PaginationWrapper;
