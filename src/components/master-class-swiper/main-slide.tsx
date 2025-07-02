@@ -1,9 +1,13 @@
+import * as motion from "motion/react-client";
 import Image, { ImageProps } from "next/image";
 
 type Props = ImageProps & { cardTitle: string; cardSubtitle: string };
 
 const MainSlide = ({ cardTitle, cardSubtitle, alt, ...props }: Props) => (
-  <div
+  <motion.div
+    initial={{ opacity: 0, y: "-100%" }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeInOut" }}
     style={{ backgroundImage: "var(--slide-gradient)" }}
     className="border-accent/30 bg-slide rounded-hero-lg flex w-[200px] flex-col justify-end overflow-hidden border p-3.5 pt-7 md:w-[351px] md:px-6 md:py-8"
   >
@@ -23,7 +27,7 @@ const MainSlide = ({ cardTitle, cardSubtitle, alt, ...props }: Props) => (
     <p className="text-secondary-foreground/20 text-8/normal mt-2 text-center md:text-xs/tight">
       {cardSubtitle}
     </p>
-  </div>
+  </motion.div>
 );
 
 export default MainSlide;

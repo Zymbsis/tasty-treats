@@ -3,6 +3,8 @@ import { Recipe } from "@/lib/types/api.types";
 import Rating from "@/components/ui/rating";
 import ToggleToFavoriteButton from "@/components/ui/toggle-to-favorite-button";
 import Link from "next/link";
+import PageLoadingIndicator from "@/components/ui/page-loading-indicator";
+import { ROUTES } from "@/lib/constants/rotes";
 
 const RecipeItem = ({ ...recipe }: Recipe) => {
   const { _id, title, description, rating, preview } = recipe;
@@ -40,10 +42,11 @@ const RecipeItem = ({ ...recipe }: Recipe) => {
         <Rating rating={rating} />
         <Link
           scroll={false}
-          href={`/recipe/${_id}`}
-          className="bg-accent text-secondary-foreground hover:opacity-hover transition-transform-colors-opacity rounded-sm px-2.5 py-2 text-sm font-medium will-change-auto active:scale-[0.97] xl:px-3.5"
+          href={`${ROUTES.RECIPES}/${_id}`}
+          className="bg-accent text-secondary-foreground hover:opacity-hover transition-transform-colors-opacity relative rounded-sm px-2.5 py-2 text-sm font-medium will-change-auto active:scale-[0.97] xl:px-3.5"
         >
           See recipe
+          <PageLoadingIndicator className="bg-accent/60" color="default" />
         </Link>
       </CardFooter>
     </Card>

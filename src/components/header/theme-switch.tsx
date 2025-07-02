@@ -21,7 +21,7 @@ const ThemeSwitch = () => {
       isSelected={resolvedTheme === "dark"}
       onValueChange={handleToggleTheme}
       classNames={{
-        base: "animate-fade-in ",
+        base: "animate-fade-in ml-auto",
         wrapper:
           "bg-switch group-data-[selected=true]:bg-accent h-5 w-10 p-0 box-content border border-transparent drop-shadow-lg",
         thumb:

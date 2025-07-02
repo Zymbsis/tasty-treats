@@ -1,32 +1,26 @@
 "use client";
 
+import { ROUTES_MAP } from "@/lib/constants/rotes";
 import { cn } from "@heroui/react";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const routes = [
-  { href: "/", name: "Home" },
-  { href: "/favorites", name: "Favorites" },
-];
-
-const NavLinks = ({ ...props }: Omit<LinkProps, "href">) => {
+const NavLinks = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex min-h-6 flex-col items-center text-base font-medium md:flex-row md:gap-4">
-      {routes.map(route => (
+    <nav className="flex h-full flex-col items-center justify-center text-lg font-medium md:flex-row md:gap-4 md:text-base/tight">
+      {ROUTES_MAP.map(route => (
         <Link
           className={cn(
-            "text-hover-foreground md:text-foreground p-2 transition-colors md:p-0",
+            "hover:text-accent text-foreground p-2 transition-colors md:p-0",
             {
-              "text-active-foreground dark:text-accent md:text-accent":
-                route.href === pathname,
+              "text-accent": route.href === pathname,
             },
           )}
           key={route.href}
           href={route.href}
           scroll={false}
-          {...props}
         >
           {route.name}
         </Link>

@@ -6,9 +6,9 @@ import CategoriesSkeleton from "@/components/skeletons/categories-skeleton";
 
 const Sidebar = () => {
   return (
-    <aside className="shrink-0 md:w-[176px] xl:w-[235px]">
+    <aside className="flex shrink-0 flex-col gap-10 md:w-[176px] md:gap-16 xl:w-[235px]">
       <Suspense fallback={<CategoriesSkeleton />}>
-        <CategoriesWrapper />
+        <CategoriesWrapper listType="vertical" />
       </Suspense>
       <Suspense fallback={<PopularRecipesSkeleton />}>
         <PopularRecipesWrapper />

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import Provider from "@/components/ui/providers";
+import Providers from "@/components/ui/providers";
 import Header from "@/components/header/header";
 import "@/lib/styles/globals.css";
 
@@ -25,11 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable}`}>
-        <Provider>
+        <Providers>
           <Header />
           {modal}
           {children}
-        </Provider>
+        </Providers>
       </body>
     </html>
   );

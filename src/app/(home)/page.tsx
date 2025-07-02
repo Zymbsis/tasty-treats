@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Recipes from "@/components/recipes/recipes";
+import RecipesWrapper from "@/components/recipes/recipes-wrapper";
 import { SEARCH_PARAMS, SearchParamsType } from "@/lib/constants/search-params";
 
 export default async function Home({
@@ -17,7 +17,7 @@ export default async function Home({
 
   return (
     <Suspense fallback="Loading...">
-      <Recipes query={extractedQuery} />
+      <RecipesWrapper query={extractedQuery} />
     </Suspense>
   );
 }

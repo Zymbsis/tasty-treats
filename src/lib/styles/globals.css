@@ -139,6 +139,14 @@ body::-webkit-scrollbar {
   }
 }
 
+.animate-fade-in {
+  animation: fade-in 0.3s ease-in var(--delay, 0s) both;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.8s ease-out var(--delay, 0s) both;
+}
+
 .glow-ellipse {
   @apply bg-accent/20 absolute h-full w-full rotate-45 rounded-full blur-[80px];
 }

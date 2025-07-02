@@ -1,4 +1,4 @@
 import { redirect } from "next/navigation";
 
-const Page = async () => redirect("/");
+const Page = () => redirect("/");
 export default Page;

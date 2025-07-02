@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode, Suspense } from "react";
 import bgMobile from "../../../public/favorites-bg-mobile.png";
 import bgTablet from "../../../public/favorites-bg-tablet.png";
 import bgDesktop from "../../../public/favorites-bg-desktop.png";
@@ -18,7 +18,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
           }
           className="h-[516px] bg-(image:--bg-mobile) bg-cover bg-no-repeat md:h-[356px] md:bg-(image:--bg-tablet) xl:bg-(image:--bg-desktop)"
         ></div>
-        <CategoriesWrapper />
+        <Suspense>
+          <CategoriesWrapper listType="horizontal" />
+        </Suspense>
       </section>
       {children}
     </main>

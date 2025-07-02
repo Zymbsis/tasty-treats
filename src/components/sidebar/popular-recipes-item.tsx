@@ -1,17 +1,20 @@
 import Image from "next/image";
 import { PopularRecipe } from "@/lib/types/api.types";
 import Link from "next/link";
+import PageLoadingIndicator from "@/components/ui/page-loading-indicator";
+import { ROUTES } from "@/lib/constants/rotes";
 
 const PopularRecipesItem = ({ ...recipe }: PopularRecipe) => {
   const { title, preview, description, _id } = recipe;
 
   return (
     <Link
-      href={`/recipe/${_id}`}
+      href={`${ROUTES.RECIPES}/${_id}`}
       scroll={false}
       className="flex cursor-pointer gap-4 md:gap-2 xl:gap-4"
     >
       <div className="rounded-hero-lg relative size-16 shrink-0 md:size-12 xl:size-16">
+        <PageLoadingIndicator className="bg-foreground/90" />
         <Image
           src={preview}
           alt={title}
