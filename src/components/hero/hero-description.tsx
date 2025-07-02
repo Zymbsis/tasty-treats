@@ -2,7 +2,7 @@ import * as motion from "motion/react-client";
 
 const HeroDescription = () => {
   return (
-    <div className="mb-12 shrink-0 md:mb-16 md:w-md xl:mb-0 xl:pt-16">
+    <div className="mb-12 shrink-0 overflow-x-hidden md:mb-16 md:w-md xl:mb-0 xl:pt-16">
       <h1 className="text-26/tight mb-3.5 font-semibold uppercase md:mb-4 md:text-4xl/tight">
         <motion.span
           initial={{ opacity: 0, x: -100 }}
